@@ -1,0 +1,12 @@
+{
+  "name": "copychecker-playwright-smoke",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Parallel Playwright scaffolding for future migration from Selenium.",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

@@ -7,13 +7,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from tools.automation.src.settings import URL, IMAGE_DIR
 from tools.automation.src.pages.common_actions import CommonActions
+from tools.automation.src.pages.base_page import BasePage
 
 
-class PDFToTextPage:
+class PDFToTextPage(BasePage):
     def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
-        os.makedirs("screenshots", exist_ok=True)
+        super().__init__(driver, wait)
         self.common = CommonActions(driver, wait)
 
     def timestamped(self, label):
@@ -74,4 +73,11 @@ class PDFToTextPage:
         except Exception as e:
             print(f"❌ Convert error: {e}")
 
+    def is_convert_button_visible(self):
+        convert_btn_xpath = "/html/body/section/div[1]/div[1]/button"
+        try:
+            button = self.wait.until(EC.visibility_of_element_located((By.XPATH, convert_btn_xpath)))
+            return button.is_displayed()
+        except Exception:
+            return False
 

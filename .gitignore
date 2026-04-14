@@ -9,4 +9,7 @@ __pycache__/
 .idea/
 build/
 dist/
+reports/
+playwright/node_modules/
+playwright/test-results/
 tools/automation/screenshots/

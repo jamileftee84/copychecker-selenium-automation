@@ -12,6 +12,8 @@ This repository shows practical UI automation work in a way that is easy to revi
 - centralized runtime configuration
 - interactive local launcher for demos
 - lightweight GitHub Actions quality checks
+- pytest fixtures and HTML reporting
+- Playwright migration scaffolding
 
 ## Project Structure
 
@@ -22,6 +24,8 @@ This repository shows practical UI automation work in a way that is easy to revi
 - `tools/automation/data/` sample files used by upload workflows
 - `tools/automation/main.py` interactive runner
 - `scripts/dev/run_tests.sh` helper to run one or many modules
+- `tests/` pytest-based framework and smoke tests
+- `playwright/` parallel migration path for modern browser automation
 - `.github/workflows/python-checks.yml` CI validation
 
 ## Local Setup
@@ -54,6 +58,33 @@ Run a single test module:
 bash scripts/dev/run_tests.sh tools/automation/tests/test_pdf_to_text.py
 ```
 
+Run the modern pytest layer:
+
+```bash
+pytest -m framework
+```
+
+Run the browser-based pytest smoke test:
+
+```bash
+RUN_UI_TESTS=1 pytest -m ui tests/test_pdf_to_text_pytest.py
+```
+
+Generate the HTML report in `reports/`:
+
+```bash
+pytest -m framework
+```
+
+Try the Playwright migration scaffold:
+
+```bash
+cd playwright
+npm install
+npx playwright install chromium
+npm test
+```
+
 ## Configuration
 
 This repository is safe to share publicly:
@@ -71,6 +102,6 @@ This repository is safe to share publicly:
 ## Roadmap
 
 1. Add CI/CD execution for selected browser tests
-2. Standardize the Page Object Model layer further
-3. Introduce Playwright and migrate critical paths gradually
+2. Expand the base page abstraction across all page objects
+3. Migrate critical flows from Selenium to Playwright gradually
 4. Add better assertions, reporting, and environment profiles

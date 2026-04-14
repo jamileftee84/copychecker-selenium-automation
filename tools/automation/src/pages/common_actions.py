@@ -6,13 +6,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+from tools.automation.src.pages.base_page import BasePage
+from tools.automation.src.config.settings import AUTOMATION_ROOT
 
-class CommonActions:
+class CommonActions(BasePage):
     def __init__(self, driver, wait, tool_name="DefaultTool"):
-        self.driver = driver
-        self.wait = wait
+        super().__init__(driver, wait)
         self.tool_name = tool_name.replace(" ", "_").replace("-", "_") + "_SS"
-        self.screenshot_dir = os.path.join("screenshots", self.tool_name)
+        self.screenshot_dir = os.path.join(AUTOMATION_ROOT, "screenshots", self.tool_name)
         os.makedirs(self.screenshot_dir, exist_ok=True)
         self.fail_log_path = os.path.join(self.screenshot_dir, "fail_log.txt")
 
@@ -153,4 +154,3 @@ class CommonActions:
             self.take_screenshot("ERROR_Name_Edit")
             print(f"Rename before download failed: {e}")
             self.log_failure(f"Rename before download failed: {e}")
-

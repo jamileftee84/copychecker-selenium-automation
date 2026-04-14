@@ -11,6 +11,7 @@ This module contains the Selenium-based automation suite.
 - `data/` local files used for upload-based scenarios
 - `screenshots/` output folder for debug artifacts
 - `main.py` local launcher for manual execution
+- `../tests/` pytest-based coverage for the evolving framework layer
 
 ## Run
 
@@ -27,3 +28,5 @@ bash scripts/dev/run_tests.sh
 ## Configuration
 
 Set `BASE_URL` to point tests at a different environment when needed.
+
+The legacy runnable scripts remain intact, while the repository-level `tests/` folder shows the direction toward a more standard pytest-driven framework.

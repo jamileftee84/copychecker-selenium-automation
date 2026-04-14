@@ -1,0 +1,10 @@
+This sample text file is used by the Text to ASCII automation flow.
+It intentionally contains plain text only so the repository stays portable.
+
+Automation focus areas in this project:
+- file upload workflows
+- page object organization
+- environment-based configuration
+- browser-driven validation of UI behavior
+
+This file can be replaced with any UTF-8 text content during local testing.
